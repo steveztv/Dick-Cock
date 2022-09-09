@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "748427935547",
+    "project_id": "dick-cock",
+    "storage_bucket": "dick-cock.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748427935547:android:47bda552e2bea16feec11e",
+        "android_client_info": {
+          "package_name": "com.example.tiktok_tutorial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "748427935547-ss2abfffj6j024vplbgh73tp01jb7003.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6YRmYYSQU1bwvg_Gts4I8icfjM1q1GVE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "748427935547-ss2abfffj6j024vplbgh73tp01jb7003.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
