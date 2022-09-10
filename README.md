@@ -22,10 +22,10 @@ Esse projeto vou feito com o código baseado nesse vídeo [Rivaan Ranawat](https
 ## Adaptação
 Esse projeto está sendo adaptador por [Leandro Vieas](https://github.com/leandroviegas)
 
-[x] - Aprimoramento no upload de vídeos
-[x] - Permitir que usuários se cadastrem sem foto
-[x] - Mostrar preview de foto de perfil
-[ ] - Opção de deleção de vídeos
-[ ] - Criação de cargos para usuários da staff|similares
-[ ] - Aprimorar sistema de recomendação
-[ ] - Adicionar ícone personalizado para o app
+- [x] Aprimoramento no upload de vídeos
+- [x] Permitir que usuários se cadastrem sem foto
+- [x] Mostrar preview de foto de perfil
+- [ ] Opção de deleção de vídeos
+- [ ] Criação de cargos para usuários da staff|similares
+- [ ] Aprimorar sistema de recomendação
+- [ ] Adicionar ícone personalizado para o app
