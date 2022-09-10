@@ -3,7 +3,8 @@ import 'package:tiktok_tutorial/constants.dart';
 import 'package:tiktok_tutorial/views/widgets/custom_icon.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  final int pageIndex;
+  const HomeScreen({Key? key, this.pageIndex = 0 }) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -11,6 +12,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int pageIdx = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    pageIdx = widget.pageIndex;
+  }
 
   @override
   Widget build(BuildContext context) {

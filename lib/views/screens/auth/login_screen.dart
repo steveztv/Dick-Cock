@@ -17,9 +17,11 @@ class LoginScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            new Image.network(
-              'https://cdn.discordapp.com/attachments/1017018823112654900/1017163805911941170/testcock.png',
-            ),
+            Padding(
+                padding: const EdgeInsets.only(left: 20, right: 25, bottom: 20),
+                child: Image.network(
+                  'https://cdn.discordapp.com/attachments/1017018823112654900/1017163805911941170/testcock.png',
+                )),
             const SizedBox(
               height: 15,
             ),
@@ -27,7 +29,6 @@ class LoginScreen extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               margin: const EdgeInsets.symmetric(horizontal: 20),
               child: TextInputField(
-
                 controller: _emailController,
                 labelText: 'Coloca seu e-mail',
                 icon: Icons.email,
@@ -65,7 +66,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 child: const Center(
                   child: Text(
-                    'Login',
+                    'ENTRAR',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w700,
@@ -77,14 +78,14 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(
               height: 15,
             ),
-            Row(
+            Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
-                  'NÃO TEM CONTA',
+                  'NÃO TEM CONTA?',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 20,
+                    fontSize: 15,
                   ),
                 ),
                 InkWell(
@@ -93,9 +94,16 @@ class LoginScreen extends StatelessWidget {
                       builder: (context) => SignupScreen(),
                     ),
                   ),
-                  child: Text(
-                    ' CRIA ENTAO PORRA!',
-                    style: TextStyle(fontSize: 20, color: buttonColor),
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 10),
+                    child: Text(
+                      ' CRIA ENTAO PORRA!',
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: buttonColor,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
                   ),
                 ),
               ],

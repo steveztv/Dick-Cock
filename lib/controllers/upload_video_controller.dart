@@ -53,18 +53,19 @@ class UploadVideoController extends GetxController {
   uploadVideo(String songName, String caption, String videoPath) async {
     String uid = firebaseAuth.currentUser!.uid;
     DocumentSnapshot userDoc =
-        await firestore.collection('users').doc(uid).get();
-    // get id
-    var allDocs = await firestore.collection('videos').get();
-    int len = allDocs.docs.length;
+        await firestore.collection('users').doc(uid).get();    // get id
 
-    String videoUrl = await _uploadVideoToStorage("Video $len", videoPath);
-    String thumbnail = await _uploadImageToStorage("Video $len", videoPath);
+    DateTime _now = DateTime.now();
+
+    String videoId = uid + _now.year.toString() + _now.month.toString() + _now.day.toString() + _now.hour.toString() + _now.minute.toString() + _now.second.toString();
+
+    String videoUrl = await _uploadVideoToStorage("Video $videoId", videoPath);
+    String thumbnail = await _uploadImageToStorage("Video $videoId", videoPath);
 
     Video video = Video(
       username: (userDoc.data()! as Map<String, dynamic>)['name'],
       uid: uid,
-      id: "Video $len",
+      id: "Video $videoId",
       likes: [],
       commentCount: 0,
       shareCount: 0,
@@ -75,9 +76,8 @@ class UploadVideoController extends GetxController {
       thumbnail: thumbnail,
     );
 
-    await firestore.collection('videos').doc('Video $len').set(
+    await firestore.collection('videos').doc('Video $videoId').set(
           video.toJson(),
         );
-    Get.back();
   }
 }

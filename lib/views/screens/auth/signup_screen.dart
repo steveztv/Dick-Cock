@@ -43,16 +43,15 @@ class _SignupScreenState extends State<SignupScreen> {
                 fontWeight: FontWeight.w900,
               ),
             ),
-            const Text(
-              'FAÇA SUA CONTA',
-              style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            const SizedBox(
-              height: 25,
-            ),
+            const Padding(
+                padding: EdgeInsets.only(top: 5, bottom: 10),
+                child: Text(
+                  'FAÇA SUA CONTA',
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.black87),
+                )),
             Stack(
               children: [
                 Container(
@@ -168,14 +167,14 @@ class _SignupScreenState extends State<SignupScreen> {
             const SizedBox(
               height: 15,
             ),
-            Row(
+            Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text(
                   'JA TEM UMA CONTA? ',
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 20,
+                    fontSize: 15,
                   ),
                 ),
                 InkWell(
@@ -184,9 +183,15 @@ class _SignupScreenState extends State<SignupScreen> {
                       builder: (context) => LoginScreen(),
                     ),
                   ),
-                  child: Text(
-                    'Login',
-                    style: TextStyle(fontSize: 20, color: buttonColor),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: Text(
+                      'ENTRAR',
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: buttonColor,
+                          decoration: TextDecoration.underline),
+                    ),
                   ),
                 ),
               ],
