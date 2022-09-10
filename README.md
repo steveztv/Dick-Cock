@@ -2,7 +2,7 @@
 
 Aplicativo Dick Cock - Funciona só pra android! 
 
-## Funcinalidades
+## Funcionalidades
 - Autenticação com Email e senha
 - Enviar vídeos com legenda
 - Comprime os vídeos
