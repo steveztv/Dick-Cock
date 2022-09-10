@@ -36,7 +36,9 @@ class Comment {
       comment: snapshot['comment'],
       datePublished: snapshot['datePublished'],
       likes: snapshot['likes'],
-      profilePhoto: snapshot['profilePhoto'],
+      profilePhoto:  snapshot['profilePhoto'] != '' && snapshot['profilePhoto'] != null
+          ? snapshot['profilePhoto']
+          : "https://media.discordapp.net/attachments/822834600388067338/1017992531927122010/unknown.png?width=519&height=473",
       uid: snapshot['uid'],
       id: snapshot['id'],
     );

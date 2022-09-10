@@ -32,14 +32,14 @@ class AuthController extends GetxController {
     }
   }
 
-  void pickImage() async {
+  Future<Rx<File?>> pickImage() async {
     final pickedImage =
         await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedImage != null) {
-      Get.snackbar('Profile Picture',
-          'You have successfully selected your profile picture!');
+      Get.snackbar('Imagem de perfil', 'Foto selecionada com sucesso meu chapa!');
     }
     _pickedImage = Rx<File?>(File(pickedImage!.path));
+    return _pickedImage;
   }
 
   // upload to firebase storage
@@ -59,16 +59,13 @@ class AuthController extends GetxController {
   void registerUser(
       String username, String email, String password, File? image) async {
     try {
-      if (username.isNotEmpty &&
-          email.isNotEmpty &&
-          password.isNotEmpty &&
-          image != null) {
+      if (username.isNotEmpty && email.isNotEmpty && password.isNotEmpty) {
         // save out user to our ath and firebase firestore
         UserCredential cred = await firebaseAuth.createUserWithEmailAndPassword(
           email: email,
           password: password,
         );
-        String downloadUrl = await _uploadToStorage(image);
+        String downloadUrl = image != null ? await _uploadToStorage(image) : '';
         model.User user = model.User(
           name: username,
           email: email,
@@ -81,13 +78,13 @@ class AuthController extends GetxController {
             .set(user.toJson());
       } else {
         Get.snackbar(
-          'Error Creating Account',
-          'Please enter all the fields',
+          'Erro ao criar conta',
+          'Por favor preencha todos os campos',
         );
       }
     } catch (e) {
       Get.snackbar(
-        'Error Creating Account',
+        'Erro ao criar conta',
         e.toString(),
       );
     }

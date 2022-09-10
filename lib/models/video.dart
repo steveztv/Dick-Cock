@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../constants.dart';
+
 class Video {
   String username;
   String uid;
@@ -54,7 +56,9 @@ class Video {
       songName: snapshot['songName'],
       caption: snapshot['caption'],
       videoUrl: snapshot['videoUrl'],
-      profilePhoto: snapshot['profilePhoto'],
+      profilePhoto: snapshot['profilePhoto'] != '' && snapshot['profilePhoto'] != null
+          ? snapshot['profilePhoto']
+          : userPlaceholder,
       thumbnail: snapshot['thumbnail'],
     );
   }

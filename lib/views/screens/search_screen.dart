@@ -30,9 +30,9 @@ class SearchScreen extends StatelessWidget {
         body: searchController.searchedUsers.isEmpty
             ? const Center(
                 child: Text(
-                  'PROCURAR PESSOAS',
+                  'Procurar pessoas',
                   style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 20,
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                   ),

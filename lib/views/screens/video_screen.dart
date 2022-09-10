@@ -4,7 +4,6 @@ import 'package:tiktok_tutorial/controllers/video_controller.dart';
 import 'package:tiktok_tutorial/views/screens/comment_screen.dart';
 import 'package:tiktok_tutorial/views/widgets/circle_animation.dart';
 import 'package:tiktok_tutorial/views/widgets/video_player_iten.dart';
-import 'package:video_player/video_player.dart';
 import 'package:get/get.dart';
 
 class VideoScreen extends StatelessWidget {
@@ -158,16 +157,16 @@ class VideoScreen extends StatelessWidget {
                                     InkWell(
                                       onTap: () =>
                                           videoController.likeVideo(data.id),
-                  child:
-            data.likes.contains(
-            authController.user.uid) ?new Image.network(
-              'https://cdn.discordapp.com/attachments/1015019384323969054/1017567957649465344/likebutton1.png',
-              width: 50,
-            ):
-                  new Image.network(
-            'https://cdn.discordapp.com/attachments/1001175838433226754/1017560920123256922/likebutton.png',
-            width: 50,
-            ),
+                                      child: data.likes
+                                              .contains(authController.user.uid)
+                                          ? new Image.network(
+                                              'https://cdn.discordapp.com/attachments/1015019384323969054/1017567957649465344/likebutton1.png',
+                                              width: 50,
+                                            )
+                                          : new Image.network(
+                                              'https://cdn.discordapp.com/attachments/1001175838433226754/1017560920123256922/likebutton.png',
+                                              width: 50,
+                                            ),
                                     ),
                                     const SizedBox(height: 7),
                                     Text(

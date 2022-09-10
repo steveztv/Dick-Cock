@@ -12,6 +12,7 @@ class SearchController extends GetxController {
     _searchedUsers.bindStream(firestore
         .collection('users')
         .where('name', isGreaterThanOrEqualTo: typedUser)
+        .where('name', isLessThanOrEqualTo: typedUser+"\uf8ff")
         .snapshots()
         .map((QuerySnapshot query) {
       List<User> retVal = [];

@@ -1,14 +1,31 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tiktok_tutorial/constants.dart';
 import 'package:tiktok_tutorial/views/screens/auth/login_screen.dart';
 import 'package:tiktok_tutorial/views/widgets/text_input_field.dart';
 
-class SignupScreen extends StatelessWidget {
-  SignupScreen({Key? key}) : super(key: key);
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SignupScreen> createState() => _SignupScreenState();
+}
+
+class _SignupScreenState extends State<SignupScreen> {
+  var _image;
 
   final TextEditingController _emailController = TextEditingController();
+
   final TextEditingController _passwordController = TextEditingController();
+
   final TextEditingController _usernameController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,17 +55,40 @@ class SignupScreen extends StatelessWidget {
             ),
             Stack(
               children: [
-                const CircleAvatar(
-                  radius: 64,
-                  backgroundImage: NetworkImage(
-                      'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png'),
-                  backgroundColor: Colors.black,
+                Container(
+                  width: 110,
+                  height: 110,
+                  decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(200)),
+                  child: _image != null
+                      ? ClipOval(
+                          child: Image.file(
+                          _image,
+                          width: 110,
+                          height: 110,
+                          fit: BoxFit.cover,
+                        ))
+                      : SizedBox(
+                          width: 110,
+                          height: 110,
+                          child: Icon(
+                            Icons.person,
+                            size: 100,
+                            color: Colors.grey[800],
+                          ),
+                        ),
                 ),
                 Positioned(
                   bottom: -10,
-                  left: 80,
+                  left: 70,
                   child: IconButton(
-                    onPressed: () => authController.pickImage(),
+                    onPressed: () async {
+                      Rx<File?> file = await authController.pickImage();
+                      setState(() {
+                        _image = file.value;
+                      });
+                    },
                     icon: const Icon(
                       Icons.add_a_photo,
                       color: Colors.black,
@@ -101,8 +141,7 @@ class SignupScreen extends StatelessWidget {
               width: MediaQuery.of(context).size.width - 40,
               height: 50,
               decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black)
-                ,
+                border: Border.all(color: Colors.black),
                 color: buttonColor,
                 borderRadius: const BorderRadius.all(
                   Radius.circular(5),

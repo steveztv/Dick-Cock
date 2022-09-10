@@ -23,6 +23,8 @@ class VideoController extends GetxController {
     }));
   }
 
+  deleteVideo(String id) async {}
+
   likeVideo(String id) async {
     DocumentSnapshot doc = await firestore.collection('videos').doc(id).get();
     var uid = authController.user.uid;

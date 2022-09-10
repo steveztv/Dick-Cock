@@ -37,7 +37,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           }
           return Scaffold(
             appBar: AppBar(
-              backgroundColor: Colors.black12,
+              backgroundColor: Colors.black,
               leading: const Icon(
                 Icons.person_add_alt_1_outlined,
               ),
@@ -48,12 +48,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 controller.user['name'],
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
               ),
             ),
             body: SafeArea(
               child: SingleChildScrollView(
+                padding: EdgeInsets.only(top: 20),
                 child: Column(
                   children: [
                     SizedBox(
@@ -62,20 +63,38 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              ClipOval(
-                                child: CachedNetworkImage(
-                                  fit: BoxFit.cover,
-                                  imageUrl: controller.user['profilePhoto'],
-                                  height: 100,
-                                  width: 100,
-                                  placeholder: (context, url) =>
-                                      const CircularProgressIndicator(),
-                                  errorWidget: (context, url, error) =>
-                                      const Icon(
-                                    Icons.error,
-                                  ),
-                                ),
-                              )
+                              Container(
+                                width: 110,
+                                height: 110,
+                                decoration: BoxDecoration(
+                                    color: Colors.grey[200],
+                                    borderRadius: BorderRadius.circular(200)),
+                                child: controller.user['profilePhoto'] != null
+                                    ? ClipOval(
+                                        child: CachedNetworkImage(
+                                          imageUrl:
+                                              controller.user['profilePhoto'],
+                                          fit: BoxFit.cover,
+                                          height: 110,
+                                          width: 110,
+                                          placeholder: (context, url) =>
+                                              const CircularProgressIndicator(),
+                                          errorWidget: (context, url, error) =>
+                                              const Icon(
+                                            Icons.error,
+                                          ),
+                                        ),
+                                      )
+                                    : SizedBox(
+                                        width: 110,
+                                        height: 110,
+                                        child: Icon(
+                                          Icons.person,
+                                          size: 100,
+                                          color: Colors.grey[800],
+                                        ),
+                                      ),
+                              ),
                             ],
                           ),
                           const SizedBox(
@@ -186,8 +205,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   widget.uid == authController.user.uid
                                       ? 'DESLOGAR'
                                       : controller.user['isFollowing']
-                                          ? 'Unfollow'
-                                          : 'Follow',
+                                          ? 'Deseguir'
+                                          : 'Perseguir',
                                   style: const TextStyle(
                                     color: Colors.black,
                                     fontSize: 15,
